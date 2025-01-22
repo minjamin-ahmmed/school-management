@@ -45,7 +45,7 @@ const AllMembers = () => {
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
-    setShowAll((prevState) => !prevState); // Toggle between true and false
+    setShowAll((prevState) => !prevState); 
   };
 
   return (

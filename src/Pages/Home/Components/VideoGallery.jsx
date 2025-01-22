@@ -12,22 +12,22 @@ const VideoGallery = () => {
     {
       id: 1,
       thumbnail: img1,
-      videoSrc: "https://www.youtube.com/watch?v=qM3qY_kqDHw",
+      videoSrc: "https://www.youtube.com/embed/gzzRFU8CcG8?si=N8P-kmSGfbyjp6jB",
     },
     {
       id: 2,
       thumbnail: img2,
-      videoSrc: "https://www.youtube.com/watch?v=qM3qY_kqDHw",
+      videoSrc: "https://www.youtube.com/embed/gzzRFU8CcG8?si=N8P-kmSGfbyjp6jB",
     },
     {
       id: 3,
       thumbnail: img3,
-      videoSrc: "https://www.youtube.com/watch?v=qM3qY_kqDHw",
+      videoSrc: "https://www.youtube.com/embed/gzzRFU8CcG8?si=N8P-kmSGfbyjp6jB",
     },
     {
       id: 4,
       thumbnail: img4,
-      videoSrc: "https://www.youtube.com/watch?v=qM3qY_kqDHw",
+      videoSrc: "https://www.youtube.com/embed/gzzRFU8CcG8?si=N8P-kmSGfbyjp6jB",
     },
   ];
 
@@ -53,12 +53,16 @@ const VideoGallery = () => {
               className="relative w-64 h-96 group transform transition duration-300 hover:scale-105"
             >
               {activeVideo === video.id ? (
-                <video
-                  className="w-full h-full object-cover rounded-lg shadow-lg"
-                  controls
-                  autoPlay
-                  src={video.videoSrc}
-                />
+                <div className="relative w-full h-96 pb-[56.25%]">
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                    src={video.videoSrc}
+                    title={`YouTube video player for video ${video.id}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               ) : (
                 <>
                   <img
@@ -69,7 +73,7 @@ const VideoGallery = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-80 group-hover:opacity-90 transition duration-300"></div>
                   <button
                     onClick={() => handlePlayVideo(video.id)}
-                    className="w-16 h-16 bg-yellow-500 shadow-lg absolute top-[50%] left-[35%] inset-0 flex items-center justify-center text-secondary rounded-full transform transition duration-300 group-hover:scale-110"
+                    className="w-16 h-16 bg-yellow-500 shadow-lg absolute top-[40%] left-[35%] inset-0 flex items-center justify-center text-secondary rounded-full transform transition duration-300 group-hover:scale-110"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -23,8 +23,23 @@ export default {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
-      }, // Closing the extend object here
+      },
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#111827",
+          secondary: "#FACC15",
+          accent: "#DC2626",
+          neutral: "#3d4451",
+          "base-100": "#ffffff",
+          "--navbar-hover-bg": "transparent", // Disable navbar hover background
+          "--navbar-padding": "0", // Remove default padding if applied
+        },
+      },
+    ],
+  },
 };

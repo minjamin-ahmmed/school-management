@@ -10,11 +10,23 @@ import News from "../Pages/News/Page/News";
 import CampusGallery from "../Pages/CampusGallery/Page/campusGallery";
 import Blogs from "../Pages/Blogs/Page/Blogs";
 import ContactUs from "../Pages/ContactUs/Page/ContactUs";
+import ScrollToTop from "../Components/ScrollToTop/ScrollToTop";
+import BlogDetails from "../Pages/BlogDetails/BlogDetails";
+import NewsDetails from "../Pages/NewsDetails/NewsDetails";
+import Registration from "../Pages/Registration/Registration";
+import Login from "../Pages/Login/Login";
+import UserProfile from "../Pages/UserProfile/UserProfile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Mainlayout />,
+    element: (
+      <>
+        <ScrollToTop />
+        <Mainlayout />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -41,6 +53,10 @@ const router = createBrowserRouter([
         element: <News />,
       },
       {
+        path: "/news/:id",
+        element: <NewsDetails />,
+      },
+      {
         path: "/campus-gallery",
         element: <CampusGallery />,
       },
@@ -49,8 +65,28 @@ const router = createBrowserRouter([
         element: <Blogs />,
       },
       {
+        path: "/blogs/:id",
+        element: <BlogDetails />,
+      },
+      {
         path: "/contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "/sign-up",
+        element: <Registration />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/user-profile",
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

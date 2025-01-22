@@ -35,7 +35,6 @@ const Events = () => {
 
   return (
     <div>
-      {/* Alumni Images Section */}
       <div className="grid grid-cols-1 lg:grid-cols-4">
         {[alumni1, alumni2, alumni3, alumni4].map((image, index) => (
           <div
@@ -54,9 +53,7 @@ const Events = () => {
         ))}
       </div>
 
-      {/* Upcoming Events Section */}
       <div className="grid grid-cols-1 lg:grid-cols-5">
-        {/* Intro Section */}
         <div
           className="bg-accent relative h-96 text-center flex flex-col items-center justify-center"
           style={{
@@ -74,13 +71,12 @@ const Events = () => {
               Stay connected with fellow alumni through these upcoming events.
               Discover ways to network, learn, and grow together.
             </p>
-            <button className="flex items-center gap-2 text-white py-3 px-6 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105">
+            <button className="flex items-center gap-2 text-white rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105">
               See All Events <GreaterThan size={24} />
             </button>
           </div>
         </div>
 
-        {/* Events List */}
         {eventsData.map((event, index) => (
           <div
             key={index}
@@ -97,7 +93,7 @@ const Events = () => {
             <p className="mb-8">{event.location}</p>
             <button
               onClick={() => setSelectedEvent(event)}
-              className="flex items-center gap-2 text-accent py-3 px-6 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105"
+              className="flex items-center gap-2 text-accent text-sm font-medium transition-all duration-300 transform hover:scale-105"
             >
               Details <GreaterThan size={24} />
             </button>
@@ -105,7 +101,6 @@ const Events = () => {
         ))}
       </div>
 
-      {/* Modal for Event Details */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-lg max-w-md w-full">

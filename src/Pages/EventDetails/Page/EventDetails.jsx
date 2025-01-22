@@ -1,8 +1,5 @@
 import { useParams } from "react-router-dom";
-import img1 from "../../../assets/EventImg1.png";
-import img2 from "../../../assets/EventImg2.png";
-import img3 from "../../../assets/EventImg3.png";
-import img4 from "../../../assets/EventImg4.png";
+
 import {
   CalendarDots,
   Clock,
@@ -11,181 +8,58 @@ import {
   User,
   Users,
 } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const EventDetails = () => {
   const { id } = useParams();
-  const eventList = [
-    {
-      id: 1,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img1,
-      img2: img1,
-      img3: img1,
-      img4: img1,
-      img5: img1,
-    },
-    {
-      id: 2,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img2,
-      img2: img2,
-      img3: img2,
-      img4: img2,
-      img5: img2,
-    },
-    {
-      id: 3,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img3,
-      img2: img3,
-      img3: img3,
-      img4: img3,
-      img5: img3,
-    },
-    {
-      id: 4,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img4,
-      img2: img4,
-      img3: img4,
-      img4: img4,
-      img5: img4,
-    },
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    {
-      id: 5,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img1,
-      img2: img1,
-      img3: img1,
-      img4: img1,
-      img5: img1,
-    },
-    {
-      id: 6,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img2,
-      img2: img2,
-      img3: img2,
-      img4: img2,
-      img5: img2,
-    },
-    {
-      id: 7,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img3,
-      img2: img3,
-      img3: img3,
-      img4: img3,
-      img5: img3,
-    },
-    {
-      id: 8,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img4,
-      img2: img4,
-      img3: img4,
-      img4: img4,
-      img5: img4,
-    },
+  const API_URL = import.meta.env.VITE_API_URL;
+  const Image_API_URL = import.meta.env.VITE_IMAGE_API_URL;
 
-    {
-      id: 9,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img1,
-      img2: img1,
-      img3: img1,
-      img4: img1,
-      img5: img1,
-    },
-    {
-      id: 10,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img3,
-      img2: img3,
-      img3: img3,
-      img4: img3,
-      img5: img3,
-    },
-    {
-      id: 11,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img3,
-      img2: img3,
-      img3: img3,
-      img4: img3,
-      img5: img3,
-    },
-    {
-      id: 12,
-      title: "Birkutsho Abinash HS & College: Annual Alumni Homecoming",
-      description:
-        "Birkutsho Abinash HS & College is thrilled to announce its Annual Alumni Homecoming event, scheduled for October 15, 2024. This special occasion invites former students to reconnect with old friends, share memories, and celebrate their shared history at the school. The event will feature a welcome ceremony, campus tours, and a gala dinner, offering alumni the chance to see how the school has evolved and to engage with current students and faculty. It’s a day of nostalgia, networking, and renewed connections, marking another memorable chapter in the school’s vibrant community.",
-      date: "2024-10-15",
-      place: "Birkutsho Abinash Campus, Dhaka, Bangladesh",
-      img1: img4,
-      img2: img4,
-      img3: img4,
-      img4: img4,
-      img5: img4,
-    },
-  ];
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const url = `${API_URL}event/details/${id}`;
+        console.log("Requesting data from:", url);
+        const response = await axios.get(url);
+        console.log("API Response:", response.data);
+        setEvent(response.data.data || []);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+        setError("Failed to fetch events. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const event = eventList.find((event) => event.id === parseInt(id));
+    fetchEvent();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center mt-12">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="w-11/12 lg:w-9/12 mx-auto py-16">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
         <div className="lg:col-span-3">
-          <div className="w-full h-96">
+          <div className="w-full h-[600px] mb-16">
             <img
               className="w-full h-full object-cover"
-              src={event.img1}
-              alt=""
+              src={`${Image_API_URL}${event.image}`}
+              alt={event?.name || "Event Image"}
             />
           </div>
 
@@ -197,9 +71,9 @@ const EventDetails = () => {
           </div>
 
           <h3 className="text-4xl font-bold text-main mt-4 mb-10">
-            {event.title}
+            {event?.name}
           </h3>
-          <p className="text-justify">{event.description}</p>
+          <p className="text-justify">{event?.details}</p>
         </div>
 
         <div className="lg:col-span-1">
@@ -209,7 +83,7 @@ const EventDetails = () => {
                 <CalendarDots color="#FACC15" size={28} />
               </div>
               <h4 className="text-center my-2 font-bold text-main">Date</h4>
-              <p className="text-center">{event.date}</p>
+              <p className="text-center">{event?.start_date}</p>
             </div>
 
             <div className="p-2 border border-gray-300 rounded-xl">
@@ -217,7 +91,7 @@ const EventDetails = () => {
                 <Clock color="#FACC15" size={28} />
               </div>
               <h4 className="text-center my-2 font-bold text-main">Time</h4>
-              <p className="text-center">{event.time}</p>
+              <p className="text-center">{event?.start_date}</p>
             </div>
 
             <div className="p-2 border border-gray-300 rounded-xl">
@@ -247,7 +121,7 @@ const EventDetails = () => {
                 <h4 className="text-center my-2 font-bold text-main">
                   Location
                 </h4>
-                <p className="text-center text-sm">{event.place}</p>
+                <p className="text-center text-sm">{event.company}</p>
 
                 <div className="w-full h-64">
                   <iframe

@@ -1,9 +1,9 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import blogimg from "../../../assets/alumni1.png";
 
 const AllBlogs = () => {
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(8);
   const blogsList = [
     {
       title:
@@ -226,11 +226,11 @@ const AllBlogs = () => {
     },
   ];
   const showMore = () => {
-    setVisibleCount((prev) => prev + 6);
+    setVisibleCount((prev) => prev + 4);
   };
 
   const showLess = () => {
-    setVisibleCount(12);
+    setVisibleCount(8);
   };
   return (
     <div className="w-11/12 lg:w-9/12 mx-auto py-16">

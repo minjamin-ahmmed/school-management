@@ -1,9 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
+import "./navbar.css";
+import useAuthStore from "../../store/authStore";
 
 const Navbar = () => {
+  const username = useAuthStore((state) => state.username);
+  const token = useAuthStore((state) => state.username);
+  const logout = useAuthStore((state) => state.logout);
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleDrawer = () => {
     setIsDrawerOpen((prev) => !prev);
@@ -15,27 +37,79 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Top Navbar */}
       <div className="h-16 bg-secondary">
         <div className="w-10/12 mx-auto">
           <div className="flex items-center justify-between">
             <div className="h-16 bg-accent flex items-center justify-start w-3/12 lg:w-1/12 relative">
               <Link to="/">
                 {" "}
-                <div className="absolute left-2 lg:left-4 2xl:left-[20%] top-4 flex items-center justify-center">
+                <div className="absolute left-2 lg:left-3 2xl:left-[20%] top-4 flex items-center justify-center">
                   <img src={logo} alt="" />
                 </div>
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <h3 className="cursor-pointer">Apply</h3>
+              {token ? (
+                <div className="dropdown dropdown-end flex items-center gap-2">
+                  <h2>{username}</h2>
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                    onClick={() => setIsOpen(!isOpen)} // Toggle the dropdown visibility
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        alt="User Avatar"
+                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      />
+                    </div>
+                  </div>
+                  {isOpen && (
+                    <ul
+                      tabIndex={0}
+                      className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[10] mt-36 w-52 p-2 shadow"
+                    >
+                      <li>
+                        <Link
+                          to="/user-profile"
+                          onClick={() => setIsOpen(false)}
+                          className="justify-between"
+                        >
+                          Profile
+                        </Link>
+                      </li>
 
-              <button className="btn bg-white border border-accent rounded-lg text-accent font-bold">
-                Sign Up
-              </button>
-              <button className="btn border-none rounded-lg font-bold bg-accent hover:bg-red-700 text-white">
-                Login
-              </button>
+                      <li>
+                        <button
+                          onClick={() => {
+                            logout();
+                            setIsOpen(false);
+                          }}
+                          className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              ) : (
+                // Show Sign Up and Login buttons when not logged in
+                <>
+                  <h3 className="cursor-pointer">Apply</h3>
+                  <Link to="/sign-up">
+                    <button className="btn bg-white border border-accent rounded-lg text-accent font-bold">
+                      Sign Up
+                    </button>
+                  </Link>
+                  <Link to="/login">
+                    <button className="btn border-none rounded-lg font-bold bg-accent hover:bg-red-700 text-white">
+                      Login
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -242,10 +316,12 @@ const Navbar = () => {
             <NavLink
               to="/alumni-association"
               className={({ isActive }) =>
-                isActive ? "text-accent" : "text-gray-700"
+                isActive
+                  ? "text-accent hover:bg-transparent p-2"
+                  : "text-gray-700 hover:bg-transparent p-2"
               }
             >
-              <li>
+              <li className="hover:bg-transparent p-0 !important">
                 <p>Alumni Association</p>
               </li>
             </NavLink>

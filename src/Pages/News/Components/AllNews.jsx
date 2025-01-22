@@ -1,30 +1,19 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllNews = () => {
   const [visibleCount, setVisibleCount] = useState(12);
   const newsList = [
     {
+      id: 1,
       title:
         "Preparing for College: What Every High School Senior Needs to Know",
       date: "20 Aug 2023",
       time: "10 Min Read",
     },
     {
-      title:
-        "Preparing for College: What Every High School Senior Needs to Know",
-      date: "20 Aug 2023",
-      time: "10 Min Read",
-    },
-
-    {
-      title:
-        "Preparing for College: What Every High School Senior Needs to Know",
-      date: "20 Aug 2023",
-      time: "10 Min Read",
-    },
-
-    {
+      id: 2,
       title:
         "Preparing for College: What Every High School Senior Needs to Know",
       date: "20 Aug 2023",
@@ -32,6 +21,23 @@ const AllNews = () => {
     },
 
     {
+      id: 3,
+      title:
+        "Preparing for College: What Every High School Senior Needs to Know",
+      date: "20 Aug 2023",
+      time: "10 Min Read",
+    },
+
+    {
+      id: 4,
+      title:
+        "Preparing for College: What Every High School Senior Needs to Know",
+      date: "20 Aug 2023",
+      time: "10 Min Read",
+    },
+
+    {
+      id: 5,
       title:
         "Preparing for College: What Every High School Senior Needs to Know",
       date: "20 Aug 2023",
@@ -229,13 +235,15 @@ const AllNews = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {newsList.slice(0, visibleCount).map((news, index) => (
           <div key={index}>
-            <div className="border border-gray-300 p-4 border-l-8 border-l-red-600">
-              <h3 className="text-lg text-main font-semibold mb-8">
-                {news.title}
-              </h3>
-              <div className="flex items-center justify-between text-gray-500">
-                <p>{news.date}</p>
-                <p>{news.time}</p>
+            <div>
+              <div className="border border-gray-300 p-4 border-l-8 border-l-red-600">
+                <h3 className="text-lg text-main font-semibold mb-8">
+                  {news.title}
+                </h3>
+                <div className="flex items-center justify-between text-gray-500">
+                  <p>{news.date}</p>
+                  <p>{news.time}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -246,14 +254,14 @@ const AllNews = () => {
         {visibleCount < newsList.length ? (
           <button
             onClick={showMore}
-            className="btn bg-accent text-white border-none mx-2"
+            className="btn bg-accent text-white border-none hover:bg-red-800 mx-2"
           >
             Show More
           </button>
         ) : (
           <button
             onClick={showLess}
-            className="btn bg-accent text-white border-none mx-2"
+            className="btn bg-accent text-white border-none  hover:bg-red-800 mx-2"
           >
             Show Less
           </button>

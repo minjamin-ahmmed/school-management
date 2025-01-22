@@ -39,14 +39,13 @@ const News = () => {
 
       <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
         <Link to="/news">
-          <button className="btn border border-gray-700 px-4 py-2 text-gray-700 transition duration-300 hover:bg-gray-700 hover:text-white flex items-center gap-2">
+          <button className="btn border border-gray-700 px-4 py-2 text-gray-700 transition-transform duration-300 ease-in-out hover:bg-gray-700 hover:text-white flex items-center gap-2 transform hover:scale-105 hover:shadow-lg">
             Read Featured News <ArrowUpRight size={24} />
           </button>
         </Link>
 
         <Link to="/news">
-          {" "}
-          <button className="btn border border-gray-700 px-4 py-2 text-gray-700 transition duration-300 hover:bg-gray-700 hover:text-white flex items-center gap-2">
+          <button className="btn border border-gray-700 px-4 py-2 text-gray-700 transition-transform duration-300 ease-in-out hover:bg-gray-700 hover:text-white flex items-center gap-2 transform hover:scale-105 hover:shadow-lg">
             Read Featured Articles <ArrowUpRight size={24} />
           </button>
         </Link>

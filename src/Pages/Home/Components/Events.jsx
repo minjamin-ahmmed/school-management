@@ -1,5 +1,5 @@
 import { ArrowUpRight, MapPinSimpleArea } from "@phosphor-icons/react";
-import bannerImg from "../../../assets/pattern-red.png";
+import bannerImg from "../../../assets/event-pattern.png";
 import eventImage from "../../../assets/events.png";
 
 const Events = () => {
@@ -57,7 +57,7 @@ const Events = () => {
             {events.map((event, index) => (
               <div
                 key={index}
-                className="bg-white bg-opacity-20 backdrop-blur-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+                className="bg-white bg-opacity-5 backdrop-blur-md rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex flex-col lg:flex-row items-center gap-4">
                   <div className="w-32 h-32">

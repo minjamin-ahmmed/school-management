@@ -5,6 +5,7 @@ import { GreaterThan } from "@phosphor-icons/react";
 
 const newsData = [
   {
+    id: 1,
     title:
       "Alumni Donation Funds State-of-the-Art Library Renovation and Reunion",
     location: "Baghmara Upazila Parishad Auditorium",
@@ -12,18 +13,21 @@ const newsData = [
     time: "10 min read",
   },
   {
+    id: 2,
     title: "High School Achieves Record-Breaking Graduation Rate and Graduate",
     location: "City Convention Hall",
     date: "April 15, 2025",
     time: "10 min read",
   },
   {
+    id: 3,
     title: "College Secures Major Grant for Groundbreaking Cancer Research",
     location: "Downtown Tech Hub",
     date: "May 5, 2025",
     time: "10 min read",
   },
   {
+    id: 4,
     title:
       "Students Lead Successful Community Outreach Program for Local Schools",
     location: "National Sports Complex",

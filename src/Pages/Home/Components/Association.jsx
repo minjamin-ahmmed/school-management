@@ -5,7 +5,7 @@ import { BookOpen, UserPlus } from "@phosphor-icons/react"; // Icons for buttons
 const Association = () => {
   return (
     <div
-      className="py-24 bg-secondary"
+      className="py-12 bg-secondary"
       style={{
         backgroundImage: `url(${bannerBg})`,
         backgroundSize: "cover",
@@ -15,9 +15,8 @@ const Association = () => {
     >
       <div className="w-11/12 lg:w-6/12 mx-auto">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
-          {/* Register Button Section */}
           <div className="transform transition-transform duration-300 hover:scale-105">
-            <p className="font-bold text-2xl mb-4 text-center text-white drop-shadow-lg">
+            <p className="font-bold text-2xl mb-4 text-center text-main drop-shadow-lg">
               Join The Alumni Association
             </p>
             <div className="flex items-center justify-center">
@@ -28,9 +27,8 @@ const Association = () => {
             </div>
           </div>
 
-          {/* Read Message Button Section */}
           <div className="transform transition-transform duration-300 hover:scale-105">
-            <p className="font-bold text-2xl mb-4 text-center text-white drop-shadow-lg">
+            <p className="font-bold text-2xl mb-4 text-center text-main drop-shadow-lg">
               Read Principal's Message
             </p>
             <div className="flex items-center justify-center">

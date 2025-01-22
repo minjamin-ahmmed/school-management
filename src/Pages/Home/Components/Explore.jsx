@@ -38,7 +38,7 @@ const Explore = () => {
       {/* Video Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center">
-          <div className="bg-white w-11/12 md:w-3/4 lg:w-1/2 rounded-lg overflow-hidden">
+          <div className="bg-white w-11/12 md:w-3/4 lg:w-3/4 rounded-lg overflow-hidden">
             <div className="relative">
               <iframe
                 className="w-full h-64 md:h-96"

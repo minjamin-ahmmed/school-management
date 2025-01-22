@@ -1,9 +1,11 @@
-import React from "react";
+import Banner from "../Components/Banner";
+import ContactForm from "../Components/ContactForm";
 
 const ContactUs = () => {
   return (
     <div>
-      <h1>Contact Us Container</h1>
+      <Banner />
+      <ContactForm />
     </div>
   );
 };

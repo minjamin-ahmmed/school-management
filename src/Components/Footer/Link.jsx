@@ -1,4 +1,5 @@
-import bannerImg from "../../assets/pattern-red.png";
+import { NavLink } from "react-router-dom";
+import bannerImg from "../../assets/link-pattern.png";
 
 const Link = () => {
   return (
@@ -18,11 +19,15 @@ const Link = () => {
           <ul className="flex flex-wrap lg:flex-nowrap items-center gap-8">
             <li className="text-white underline">Alumni</li>
             <li className="text-white underline">Tour</li>
-            <Link to="/contact-us">
-              {" "}
-              <li className="text-white underline">Contact us</li>
-            </Link>
-            <li className="text-white underline">Faculty</li>
+            <NavLink
+              to="/contact-us"
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "text-white"
+              }
+            >
+              <li className="underline">Contact Us</li>
+            </NavLink>
+            <a className="text-white underline">Faculty</a>
           </ul>
         </div>
       </div>
